@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS airport (
 INSERT INTO airport (acronym, city, name_airport) VALUES
 ('CDG', 'Paris', 'Paris-Charles De Gaulle'),
 ('HEL', 'Helsinki', 'Helsinki Airport'),
-('LCY', 'Londre', 'London City Airport'),
-('LHR', 'Londre', 'Heathrow Airport'),
+('LCY', 'Londres', 'London City Airport'),
+('LHR', 'Londres', 'Heathrow Airport'),
 ('ORY', 'Paris', 'Paris Orly Airport'),
 ('FRA', 'Frankfurt', 'Frankfurt am Main Airport'),
 ('PVG', 'Shanghai', 'Shanghai Pudong International Airport'),
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS parking (
 
 
 INSERT INTO parking (label, airport, day_price, number_max) VALUES
-('Parking 2 CDG', 'CDy', 20, 400),
+('Parking 2 CDG', 'CDG', 20, 400),
 ('Parking Roissy', 'CDG', 40, 500);
 
 DROP TABLE IF EXISTS car;
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS car (
 	plate_id VARCHAR(15),
 	brand VARCHAR(15),
 	modele varchar(15),
-	color_car ENUM("blue","red","green"),
+	color_car ENUM("blue","red","green","grey"),
 	PRIMARY KEY(plate_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS car_owner (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 INSERT INTO car_owner (plate_id, car_owner_id, date_start, date_end) VALUES
-('Z0PP56KT',1,'2019-05-25',NULL)
+('Z0PP56KT',1,'2019-05-25',NULL);
 
 DROP TABLE IF EXISTS rent;
 CREATE TABLE IF NOT EXISTS rent (
