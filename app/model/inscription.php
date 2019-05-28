@@ -19,6 +19,9 @@ $form_inscription->add('Text', 'nom_utilisateur')
 $form_inscription->add('Password', 'mdp')
                  ->label("Votre mot de passe");
 
+$form_inscription->add('Password', 'mdp_verif')
+                 ->label("Confirmez votre mot de passe");
+
 $form_inscription->add('Email', 'adresse_email')
                  ->label("Votre adresse email"); 
 

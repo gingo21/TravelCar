@@ -1,0 +1,8 @@
+- faire les classes pour les bases sql
+<- définir les usecase pour les accès a la db
+    - modification du profil utilisateur
+    - outils pour l'administration : vue d'ensemble, modification et ajouts d'éléments à la db, une map
+    
+- page de connexion
+- que met on sur la page d'accueil
+- qu'afficher après la connexion
