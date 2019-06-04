@@ -55,14 +55,14 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE IF NOT EXISTS user (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(30) NOT NULL,
-  prenom varchar(30) NOT NULL,
+  firstname varchar(30) NOT NULL,
   telephone int(13) NOT NULL,
   password varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id, email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-INSERT INTO user (name, prenom, telephone, password, email) VALUES
+INSERT INTO user (name, firstname, telephone, password, email) VALUES
 ('Reymond','François','0652457895','motdepassecomplique','francois.reymond@utt.fr');
 
 DROP TABLE IF EXISTS car_owner;

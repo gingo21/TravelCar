@@ -2,7 +2,7 @@
 
 //$nom = "reymondf";
 //
-$dsn = 'mysql:dbname=reymondf;host=localhost;charset=utf8';
+$dsn = 'mysql:dbname=travelcar;host=localhost;charset=utf8';
 $username ='root';
 $password = '';
 
@@ -14,3 +14,6 @@ $password = '';
 define('CHEMIN_VUE',    'C:/wamp64/www/TravelCar/app/view/');
 define('CHEMIN_MODELE', '../../app/model/');
 define('CHEMIN_LIB',    '../../libs/');
+define('CHEMIN_DEFAULT','C:/wamp64/www/TravelCar/');
+
+
