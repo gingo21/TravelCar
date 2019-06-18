@@ -59,11 +59,12 @@ CREATE TABLE IF NOT EXISTS user (
   telephone int(13) NOT NULL,
   password varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
+  type ENUM("client","admin"),
   PRIMARY KEY (id, email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
-INSERT INTO user (name, firstname, telephone, password, email) VALUES
-('Reymond','François','0652457895','motdepassecomplique','francois.reymond@utt.fr');
+INSERT INTO user (name, firstname, telephone, password, email,type) VALUES
+('Reymond','François','0652457895','motdepassecomplique','francois.reymond@utt.fr','admin');
 
 DROP TABLE IF EXISTS car_owner;
 CREATE TABLE IF NOT EXISTS car_owner (

@@ -1,7 +1,7 @@
 <?php
 
 include 'config.php';
-require_once 'Controller.php';
+require_once 'ControllerUser.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -28,12 +28,12 @@ switch ($action) {
     case "accueil" :
         $controller ="Controller";
     case "inscription" :
-        Controller::printInscription();
+        ControllerUser::inscription();
         break;
     case "forminscription" :
         Controller::inscription();
     case "connexion" :
-        Controller::connexion();
+        ControllerUser::connexion();
     case "readAll" :
     case "readAllProd":
     case "read" :
