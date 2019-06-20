@@ -1,24 +1,36 @@
 <?php
 
 include 'config.php';
+
 require_once 'ControllerUser.php';
+require_once 'ControllerReservation.php';
+require_once 'ControllerAdmin.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $action = $_POST["action"];
+    $type = $_POST["type"];
 }
 else{
     $query_string = $_SERVER['QUERY_STRING'];
-echo("qierbugzrqiug".$query_string);
+echo("query_string".$query_string);
 
 // fonction parse_str permet de construire une table de hachage (clé + valeur)
 parse_str($query_string, $param);
 
 // $action contient le nom de la méthode statique recherchée
 $action = $param["action"];
-}
-// récupération de l'action passée dans l'URL
+$type =  $param["type"];
 
+}
+
+if ($type == 'user') {
+    $controlleurchoisi = controllerUser::class;
+} else if ($type == 'reservation') {
+    $controlleurchoisi = controllerReservation::class;
+} else if ($type == 'admin') {
+    $controlleurchoisi = controllerAdmin::class;
+}
 
 $param = "";
 
@@ -45,11 +57,16 @@ switch ($action) {
         break;
 
     default:
-        $action = "accueil";
+        $action = $action ;
 }
 
-
-
 //$controller::$action();
+//echo ("Router : nom = $nom");
+// appel de la méthode statique $action de ControllerVin2
+//if ($parametres == NULL) {
+    $controlleurchoisi::$action();
+//} else {
+//    $controlleurchoisi::$action($parametres);
+//}
 
 

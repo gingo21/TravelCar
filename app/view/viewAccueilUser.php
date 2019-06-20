@@ -1,11 +1,9 @@
 
-<div class="container">
     <?php
     include 'fragmentHeader.html';
     include 'fragmentMenuClient.php';
 
     ?>
-    <body>
     <!-- Jumbotrom -->
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -18,5 +16,4 @@
             Vous êtes maintenant connecté !</p>
     </div>
     <p/>
-</div>
 <?php include 'fragmentFooter.html'; ?>

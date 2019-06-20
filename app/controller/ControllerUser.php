@@ -66,7 +66,7 @@ class ControllerUser {
         if ($form->submit()) {
 
             $email = $form->post('email');
-            echo $email;
+//            echo $email;
             $password = $form->post('password');
 
 
@@ -86,9 +86,9 @@ class ControllerUser {
                 $_SESSION['type'] = $infos_user['type'];
 
                 // Affichage de la confirmation de la connexion
-                echo $_SESSION['type'];
+//                echo $_SESSION['type'];
                 if ($_SESSION['type'] == 'client'){
-                    echo ("bite");
+//                    echo ("bite");
                     include CHEMIN_VUE . 'viewAccueilUser.php';
                 }
                 else {
