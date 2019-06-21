@@ -1,6 +1,7 @@
 <?php
 require ('fragmentHeader.html');
 include 'fragmentMenuClient.php';
+require CHEMIN_LIB . 'php_forms.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,27 +10,32 @@ include 'fragmentMenuClient.php';
  */
 ?>
 
-<div class="container">
-  <h2>Inline form</h2>
-  <p>Make the viewport larger than 768px wide to see that all of the form elements are inline, left aligned, and the labels are alongside.</p>
-  <form class="form-inline" action="/action_page.php">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="date" class="form-control" id="pwd" name="pwd">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="date" class="form-control" id="pwd" name="pwd">
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember"> Remember me</label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+<div class = "container">
+    <h2>Réservation d'un parking</h2>
+    <form class="form-inline" action= "../controller/router.php" method="post">
+        <?php
+        form_select("Sélection aéroport", "sel_airpot", $results);
+        ?>
+        <div class="form-group">
+            <label for="date1">Date de début:</label>
+            <input type="date" class="form-control" id="date1" placeholder="Choisir date" name="date">
+        </div>
+        <div class="form-group">
+            <label for="date2">Date de fin:</label>
+            <input type="date" class="form-control" id="date2" placeholder="Choisir date" name="date2">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <input class='hidden' name='type' value='reservation'>
+        <?php
+        if ($type == "parking") {
+            echo "<input class='hidden' name='action' value='reserveParkingStep2'>";
+        } else {
+            echo "<input class='hidden' name='action' value='reserverVehiculeDetail'>";
+        }
+        ?>
+    </form>
+
+
 </div>
 
 <?php include 'fragmentFooter.html'; ?>
