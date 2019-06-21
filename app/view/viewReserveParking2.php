@@ -32,13 +32,8 @@ form_select("Choisissez le parking", "sel_parking", $nomParking);
 ?>
 <button type="submit" class="btn btn-default">Submit</button>
 <input class='hidden' name='type' value='reservation'>
-<?php
-if ($type == "parking") {
-echo "<input class='hidden' name='action' value='validationVoitParking'>";
-} else {
-    echo "<input class='hidden' name='action' value='ajouterVoiture'>";
-}
-?>
+<input class='hidden' name='action' value='choixVoiture'>
+
 </form>
 ?>
 
