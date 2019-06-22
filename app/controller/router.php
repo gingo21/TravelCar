@@ -7,7 +7,7 @@ require_once 'ControllerReservation.php';
 require_once 'ControllerAdmin.php';
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $action = $_POST["action"];
     $type = $_POST["type"];
 }

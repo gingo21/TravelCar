@@ -18,10 +18,41 @@
 class modelCar {
 
     private $plate_id, $brand, $modele, $color_car;
+    function getPlate_id() {
+        return $this->plate_id;
+    }
 
-    function viewCar() {
+    function getBrand() {
+        return $this->brand;
+    }
+
+    function getModele() {
+        return $this->modele;
+    }
+
+    function getColor_car() {
+        return $this->color_car;
+    }
+
+    function setPlate_id($plate_id) {
+        $this->plate_id = $plate_id;
+    }
+
+    function setBrand($brand) {
+        $this->brand = $brand;
+    }
+
+    function setModele($modele) {
+        $this->modele = $modele;
+    }
+
+    function setColor_car($color_car) {
+        $this->color_car = $color_car;
+    }
+
+        function viewCar() {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
-                $this->$plate_id(), $this->$brand(), $this->$modele(), $this->$color_car());
+                $this->getplate_id(), $this->getbrand(), $this->getmodele(), $this->getcolor_car());
     }
   
  //on récupère les informations d'une voiture à partir de sa plaque d'immatriculation

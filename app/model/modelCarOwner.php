@@ -20,8 +20,8 @@ class modelCarOwner {
     public static function readVehiculeId($car_owner_id) {
         try {
             $database = SModel::getInstance();
-            $query = "select plate_id from car_owner where car_owner_id = :car_owner_id and"
-                    . "$date_end = 'null' ";
+            $query = "select plate_id from car_owner where car_owner_id = :car_owner_id and
+        isnull(date_end)";
             $statement = $database->prepare($query);
             $statement->execute([
                 'car_owner_id' => $car_owner_id

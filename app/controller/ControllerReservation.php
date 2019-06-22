@@ -13,6 +13,8 @@
  */
 include CHEMIN_MODELE . 'modelAeroport.php';
 include CHEMIN_MODELE . 'modelParking.php';
+include CHEMIN_MODELE . 'modelCarOwner.php';
+
 
 class ControllerReservation {
 
@@ -26,31 +28,32 @@ class ControllerReservation {
     public static function reserveParkingStep2() {
         //vérifier la validation des données au préalable
         //stockage dans variable de session
-        $_SESSION['parkindDateDeb'] = $_POST['Date1'];
-        $_SESSION['parkindDateFin'] = $_POST['Date2'];
+        session_start();
+        $_SESSION['parkindDateDeb'] = $_POST['date'];
+        $_SESSION['parkindDateFin'] = $_POST['date2'];
         $test = false;
         if ($test) {
             ControllerReservation::reserveParking();
         }
-        $resultsParking = modelParking::read($_GET["sel_airpot"]);
+        $resultsParking = modelParking::read($_POST["sel_airpot"]);
         require (CHEMIN_VUE . 'viewReserveParking2.php');
     }
 
     public static function choixVoiture() {
+        session_start();
+
         //vérifier la validation des données au préalable
         //stockage dans variable de session
-        $_SESSION['parking'] = $_POST['$nomParking'];
+        $_SESSION['parking'] = $_POST['sel_parking'];
         //on vérifie si l'utilisateur est propriétaire d'une voiture
         $id_user = $_SESSION['id'];
+        $results = null;
+        echo("$id_user");
         $results = modelCarOwner::readVehiculeId($id_user);
+        print_r($results);
         require (CHEMIN_VUE . 'viewReserveParking3.php');
 
-        if (results != null) {
-            //s'il est propriétaire on récupère des infos sur ses voitures
-            foreach ($results as $mv) {
-                
-            }
-        }
+       
     }
 
 }
