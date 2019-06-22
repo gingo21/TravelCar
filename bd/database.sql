@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS park (
   car_owner_id int(11) NOT NULL,
   date_debut datetime NOT NULL,
   date_fin datetime NOT NULL,
+  price int(11) NOT NULL,
   PRIMARY KEY (park_id),
   CONSTRAINT fk_plate_id FOREIGN KEY  (plate_id) REFERENCES car(plate_id),
   CONSTRAINT fk_label_parking FOREIGN KEY  (label_parking) REFERENCES parking(label),

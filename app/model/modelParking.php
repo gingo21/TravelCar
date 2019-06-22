@@ -1,14 +1,15 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 class modelParking {
+
     private $label, $airport, $day_price, $number_max;
-    
+
     function getLabel() {
         return $this->label;
     }
@@ -41,11 +42,11 @@ class modelParking {
         $this->number_max = $number_max;
     }
 
-   function viewParking() {
-        printf("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.00f</td></tr>", 
-        $this->getLabel(), $this->getAirport(), $this->getDay_price(), $this->getNumber_max());
+    function viewParking() {
+        printf("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.00f</td></tr>",
+                $this->getLabel(), $this->getAirport(), $this->getDay_price(), $this->getNumber_max());
     }
-    
+
     public static function read($id) {
         try {
             $database = SModel::getInstance();
@@ -80,6 +81,21 @@ class modelParking {
             return FALSE;
         }
     }
-     
-}
 
+    public static function readPrice($label) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select day_price from parking where label = :label";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'label' => $label
+            ]);
+            $tuple = $statement->fetch();
+            return $tuple;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+}

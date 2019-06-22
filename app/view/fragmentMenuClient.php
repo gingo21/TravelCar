@@ -60,7 +60,7 @@
       </div>
     </div>
   </nav>-->
-  <header class="masthead" style="background-image: url('../../public/img/sauv1.jpg')">
+  <header class="masthead" style="background-image: url('../../public/img/sauv1.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">

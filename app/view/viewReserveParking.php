@@ -54,12 +54,12 @@ foreach($keys as $key) {
             <input type="date" class="form-control" id="date2" placeholder="Choisir date" name="date2">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
-        <input class='hidden' name='type' value='reservation'>
+        <input type='hidden' name='type' value='reservation'>
         <?php
         if ($type == "parking") {
-            echo "<input class='hidden' name='action' value='reserveParkingStep2'>";
+            echo "<input type='hidden' name='action' value='reserveParkingStep2'>";
         } else {
-            echo "<input class='hidden' name='action' value='reserverVehiculeDetail'>";
+            echo "<input type='hidden' name='action' value='reserverVehiculeDetail'>";
         }
         ?>
     </form>
