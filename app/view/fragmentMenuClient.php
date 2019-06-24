@@ -22,7 +22,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="../controller/router.php?action=reserveParking&type=reservation">Parking</a>ControllerReservation
-            <a class="dropdown-item" href="#">Zoos</a>
+            <a class="dropdown-item" href="../controller/router.php?action=reserveCar&type=reserveCar">Réserver Voiture</a>
+            
             <a class="dropdown-item" href="#">Chasseurs</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Autres témoignages</a>

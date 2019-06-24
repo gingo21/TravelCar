@@ -5,6 +5,8 @@ include 'config.php';
 require_once 'ControllerUser.php';
 require_once 'ControllerReservation.php';
 require_once 'ControllerAdmin.php';
+require_once 'ControllerRes_car.php';
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -30,6 +32,8 @@ if ($type == 'user') {
     $controlleurchoisi = controllerReservation::class;
 } else if ($type == 'admin') {
     $controlleurchoisi = controllerAdmin::class;
+} else if ($type == 'reserveCar') {
+    $controlleurchoisi = controllerRes_Car::class;
 }
 
 $param = "";
