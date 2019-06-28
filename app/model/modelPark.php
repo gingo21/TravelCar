@@ -41,7 +41,7 @@ class modelPark {
         try {
             $database = SModel::getInstance();
             $query = "
- select   count  from parking 
+            select   count  from parking 
             LEFT JOIN (
             select label_parking, count(*) as count from park
             where DATE :date_DebR > date_debut and DATE :date_finR < date_fin
@@ -50,15 +50,50 @@ class modelPark {
  where airport = :airport ";
             $statement = $database->prepare($query);
             $statement->execute([
-       
                 'date_DebR' => $date_debR,
                 'date_finR' => $date_finR,
                 'airport' => $selAirport
-
             ]);
-            $results = array();
+            $results = array
+                (
+                array("Volvo", 22, 18),
+                array("BMW", 15, 13),
+                array("Saab", 5, 2),
+                array("Land Rover", 17, 15)
+            );
             while ($tuple = $statement->fetch()) {
                 $results[] = $tuple[0];
+            }
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    //pour un aeroport donné, on renvoi pour chaque parking le nombre de voiture qui sont déjà garé
+    //ce jour là
+    public static function readCarsByDayByParking($date, $airport) {
+        try {
+            $database = SModel::getInstance();
+            $query = "
+            select label_parking, count(plate_id) as n as from park 
+            where :date between date_debut and date_fin 
+            and label_parking in
+            ( select label from parking where airport = :airport)
+            and plate_id not in 
+            ( select plate_id from rent
+             where :date between date_start and date_end)
+             group by label_parking";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'date' => $date,
+                'airport' => $airport
+            ]);
+            $results = array();
+            
+            while ($tuple = $statement->fetch()) {
+                $results[] = $tuple;
             }
             return $results;
         } catch (PDOException $e) {
