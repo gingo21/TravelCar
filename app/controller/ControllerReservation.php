@@ -11,6 +11,7 @@
  *
  * @author francois
  */
+
 include CHEMIN_MODELE . 'modelAeroport.php';
 include CHEMIN_MODELE . 'modelParking.php';
 include CHEMIN_MODELE . 'modelCarOwner.php';
@@ -38,11 +39,16 @@ class ControllerReservation {
         }
         $_SESSION['parkindDateDeb'] = $date;
         $_SESSION['parkindDateFin'] = $date2;
-        $test = false;
-        if ($test) {
-            ControllerReservation::reserveParking();
+        
+        //on recupere toutes les jours entre les 2 dates
+        $allDays = getDatesBetween($date,$date2);
+        foreach ($allDays as $oneDay){
+            $resultat = modelPark::readCarsByDayByParking($oneDay,$_POST["sel_airpot"]);
+            print_r($resultat);
         }
         $resultsParking = modelParking::read($_POST["sel_airpot"]);
+        
+        
         require (CHEMIN_VUE . 'viewReserveParking2.php');
     }
 
