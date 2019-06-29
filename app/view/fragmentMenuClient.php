@@ -29,7 +29,7 @@
             <a class="dropdown-item" href="#">Autres témoignages</a>
           </div>
         </li>
-        <li><a href="../controller/router.php?action=signOut">Sign Out</a></li>
+        <li><<a href="../controller/router.php?action=connexion&type=user">Sign Out</a></li>
     </ul>
 </nav>
 

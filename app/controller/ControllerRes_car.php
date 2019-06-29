@@ -15,6 +15,7 @@ require_once CHEMIN_MODELE . 'modelAeroport.php';
 require_once CHEMIN_MODELE . 'modelParking.php';
 require_once CHEMIN_MODELE . 'modelCarOwner.php';
 require_once CHEMIN_MODELE . 'modelPark.php';
+require_once CHEMIN_MODELE . 'modelRent.php';
 
 class ControllerRes_car {
 
@@ -67,10 +68,13 @@ class ControllerRes_car {
         print_r($price_parking);
         $price_total = $price_parking[0] * $interval->d;
         $_SESSION['price_car'] = $price_total;
-
+        
+        print_r(gettype($_SESSION['carDateDeb']));
+        print_r(gettype($_SESSION['carDateFin']));
+        print_r($labelParking);
         // ON Recupere les voitures qui sont disponibles dans ce parking pour cette periode
          $results = modelPark::carsReadyToRent($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
-      
+         print_r($results);
         require (CHEMIN_VUE . 'viewReserveCar3.php');
     }
 
@@ -81,15 +85,17 @@ class ControllerRes_car {
         if (isset($_POST['sel_car'])) {
             $plate_id = $_POST['sel_car'];
         }
-        $date = $_SESSION['parkindDateDeb'];
-        $date2 = $_SESSION['parkindDateFin'];
+        $date = $_SESSION['carDateDeb'];
+        $date2 = $_SESSION['carDateFin'];
         $id_user = $_SESSION['id'];
         echo $id_user . "qriniu";
         echo "qgzq" . $plate_id;
-        $labelParking = $_SESSION['parking'];
-        $price = $_SESSION['price'];
-        modelPark::insert($plate_id, $labelParking, $id_user, $date, $date2, $price);
-        require (CHEMIN_VUE . 'viewReserveParkingDone.php');
+        $labelParking = $_SESSION['parking_car'];
+        $price = $_SESSION['price_car'];
+        print_r($id_user);
+        print_r($labelParking);
+        modelRent::insert($plate_id, $id_user, $labelParking, $date, $date2, $price);
+        require (CHEMIN_VUE . 'viewReserveCarDone.php');
     }
 
 }

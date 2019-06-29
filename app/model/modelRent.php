@@ -11,23 +11,23 @@
  *
  * @author francois
  */
-class modelPark {
-
+class modelRent {
+    
     //put your code here
-    private $plate_id, $label_parking, $car_owner_id, $date_debut, $date_fin;
+    private $plate_id, $label_parking, $renter_id, $date_start, $date_end;
 
-    public static function insert($plate_id, $label_parking, $car_owner_id, $date_debut, $date_fin, $price) {
+    public static function insert($plate_id, $label_parking, $renter_id, $date_start, $date_end, $price) {
         try {
             $database = SModel::getInstance();
-            $query = "insert into park value (:park_id, :plate_id, :label_parking, :car_owner_id, :date_debut, :date_fin, :price)";
+            $query = "insert into rent value (:rent_id, :plate_id, :label_parking, :renter_id, :date_start, :date_end, :price)";
             $statement = $database->prepare($query);
             $statement->execute([
-                'park_id' => null,
+                'rent_id' => null,
                 'plate_id' => $plate_id,
                 'label_parking' => $label_parking,
-                'car_owner_id' => $car_owner_id,
-                'date_debut' => $date_debut,
-                'date_fin' => $date_fin,
+                'renter_id' => $renter_id,
+                'date_start' => $date_start,
+                'date_end' => $date_end,
                 'price' => $price
             ]);
             return TRUE;

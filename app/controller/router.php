@@ -35,38 +35,14 @@ if ($type == 'user') {
 } else if ($type == 'reserveCar') {
     $controlleurchoisi = controllerRes_Car::class;
 }
-
-$param = "";
-
-$controller = "Controller";
-
-switch ($action) {
-    case "accueil" :
-        $controller ="Controller";
-    case "inscription" :
-        ControllerUser::inscription();
-        break;
-    case "forminscription" :
-        Controller::inscription();
-    case "connexion" :
-        ControllerUser::connexion();
-    case "readAll" :
-    case "readAllProd":
-    case "read" :
-    case "delete" :
-    case "readProd" :
-    case "idFormAction" :
-    case "create" :
-    case "created" :
-        break;
-
-    default:
-        $action = $action ;
+else{
+    $controlleurchoisi = controllerUser::class;
+    $action = 'accueil';
 }
 
-//$controller::$action();
-//echo ("Router : nom = $nom");
-// appel de la méthode statique $action de ControllerVin2
+
+
+
 //if ($parametres == NULL) {
     $controlleurchoisi::$action();
 //} else {
