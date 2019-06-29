@@ -71,5 +71,24 @@ class modelCar {
             return NULL;
         }
     }
+    
+ 
+       public static function insert($plate_id, $brand, $modele, $color_car) {
+        try {
+            $database = SModel::getInstance();
+            $query = "insert into car value (:plate_id, :brand, :modele, :color_car)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'plate_id' => $plate_id,
+                'brand' => $brand,
+                'modele' => $modele,
+                'color_car' => "green"
+            ]);
+            return TRUE;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return FALSE;
+        }
+    }
 
 }

@@ -36,5 +36,23 @@ class modelCarOwner {
             return NULL;
         }
     }
+    
+           public static function insert($plate_id, $car_owner_id, $date_start) {
+        try {
+            $database = SModel::getInstance();
+            $query = "insert into car_owner value (:plate_id, :car_owner_id, :date_start, :date_end)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'plate_id' => $plate_id,
+                'car_owner_id' => $car_owner_id,
+                'date_start' => $date_start,
+                'date_end' => null
+            ]);
+            return TRUE;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return FALSE;
+        }
+    }
 
 }

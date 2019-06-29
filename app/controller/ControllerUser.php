@@ -7,7 +7,11 @@
  */
 
 require_once CHEMIN_LIB . 'formr/class.formr.php';
-include CHEMIN_MODELE . 'modelUser.php';
+require_once CHEMIN_MODELE . 'modelUser.php';
+require_once CHEMIN_MODELE . 'modelCar.php';
+//require_once CHEMIN_MODELE . 'modelCarOwner.php';
+
+
 
 
 class ControllerUser {
@@ -15,33 +19,37 @@ class ControllerUser {
     public static function accueil() {
         require ('../view/viewAccueil.php');
     }
+    
+    public static function modifier() {
+        require ('../view/viewModifier.php');
+    }
+    
+    public static function addCar() {
+        require ('../view/viewFormCar.php');
+    }
+    
+    public static function handleCarForm(){
+        session_start();
+        echo'hiiii';
+        if (isset($_POST['plate_id'])&& isset($_POST['brand']) && isset($_POST['modele'])){
+            echo('hiiiii@@@@');
+            modelCar::insert($_POST['plate_id'], $_POST['brand'],$_POST['modele'], $_POST['modele'], "green");
+            $date = date('Y/m/d');
+            echo '   '. $date;
+            modelCarOwner::insert($_POST['plate_id'],$_SESSION['id'],$date);
+            $message = 'Votre voiture a bien ete ajoute';
+            
+        }
+//                require ('../view/viewAccueil.php');
+
+    }
 
     public static function inscription() {
+        session_start();
+      
 
-        $form = new Formr('bootstrap');
-        //les echos sont dans le view 
-        $form->required = '*';
-
-        // check if the form was submitted
-        if ($form->submit()) {
-
-            // process and validate the POST data
-            $email = $form->post('email', 'Email', 'valid_email');
-            $password = $form->post('passwd', 'Password', 'min_length[6]|hash');
-            $pass_conf = $form->post('passwd_conf', 'Confirm Password', 'min_length[6]|matches[passwd]');
-
-            // check if there were any errors
-            if (!$form->errors()) {
-                // no errors
-                // user has entered a valid email address, username, and confirmed their password
-                echo $form->success_message('Success!');
-                $results = ModelUser::insert($_POST['lname'], $_POST['fname'], $_POST['telephone'], sha1($_POST['passwd']),
-                                $_POST['email'],"client");
-            } else {
                 include CHEMIN_VUE . 'formulaire_inscription.php';
-            }
-        } else {
-            include CHEMIN_VUE . 'formulaire_inscription.php';
+  
         }
 
 // print messages
@@ -52,7 +60,20 @@ class ControllerUser {
     }
 
     public static function InscriptionDone() {
-        include CHEMIN_MODELE . 'inscription.php';
+        $email = $form->post('email', 'Email', 'valid_email');
+            $password = $form->post('passwd', 'Password', 'min_length[6]|hash');
+            $pass_conf = $form->post('passwd_conf', 'Confirm Password', 'min_length[6]|matches[passwd]');
+
+            // check if there were any errors
+         
+                // no errors
+                // user has entered a valid email address, username, and confirmed their password
+                $results = ModelUser::insert($_POST['lname'], $_POST['fname'], $_POST['telephone'], sha1($_POST['passwd']),
+                                $_POST['email'],"client");
+                
+             $id_user = ModelUser::connexion_ok($_POST['email'], $_POST['passwd']);
+             $_SESSION['id'] = $id_user;
+            include CHEMIN_VUE . 'viewFormCar.php';
     }
 
     public static function connexion() {
@@ -88,8 +109,8 @@ class ControllerUser {
                 // Affichage de la confirmation de la connexion
 //                echo $_SESSION['type'];
                 if ($_SESSION['type'] == 'client'){
-//                    echo ("bite");
-                    include CHEMIN_VUE . 'viewAccueilUser.php';
+
+                    include CHEMIN_VUE . 'viewFormCar.php';
                 }
                 else {
                     include CHEMIN_VUE . 'viewAccueilAdmin.php';

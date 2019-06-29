@@ -21,6 +21,9 @@ if (!empty($erreurs_inscription)) {
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <?php
+              $form = new Formr('bootstrap');
+        //les echos sont dans le view 
+        $form->required = '*';
             echo $form->form_open();
             echo $form->input_text('fname', 'First name:');
             echo $form->input_text('lname', 'Last name:');
@@ -29,8 +32,11 @@ if (!empty($erreurs_inscription)) {
             echo $form->input_text('passwd_conf', 'Password');
             echo $form->input_text('telephone', 'Telephone');
             echo $form->input_hidden('action', 'inscription');
+            ?>
+            <input type='hidden' name='type' value='user'>
+            <input type='hidden' name='action' value='inscriptionDone'>
 
-
+            <?php
             echo $form->input_submit();
             echo $form->form_close();
             ?>

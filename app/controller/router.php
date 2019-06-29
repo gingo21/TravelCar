@@ -12,7 +12,10 @@ require_once 'ControllerRes_car.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $action = $_POST["action"];
     $type = $_POST["type"];
+    echo $action;
+echo $type;
 }
+
 else{
     $query_string = $_SERVER['QUERY_STRING'];
 echo("query_string".$query_string);
@@ -27,6 +30,7 @@ $type =  $param["type"];
 }
 
 if ($type == 'user') {
+    echo 'waubgbiwue';
     $controlleurchoisi = controllerUser::class;
 } else if ($type == 'reservation') {
     $controlleurchoisi = controllerReservation::class;
@@ -36,6 +40,8 @@ if ($type == 'user') {
     $controlleurchoisi = controllerRes_Car::class;
 }
 else{
+        echo 'waubgbiwue';
+
     $controlleurchoisi = controllerUser::class;
     $action = 'accueil';
 }
