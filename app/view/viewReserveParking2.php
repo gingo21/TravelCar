@@ -24,7 +24,7 @@ require CHEMIN_LIB . 'php_forms.php';
             } else {
                 $resultsParking[$i]->viewParking();
             }
-            array_push($nomParking,  $resultsParking[$i]->getLabel());
+            array_push($nomParking, $resultsParking[$i]->getLabel());
         }
         ?>
     </tbody>
@@ -36,11 +36,18 @@ require CHEMIN_LIB . 'php_forms.php';
     form_select("Choisissez le parking", "sel_parking", $nomParking);
     ?>
     <button type="submit" class="btn btn-default">Submit</button>
-    <input class='hidden' name='type' value='reservation'>
-    <input class='hidden' name='action' value='choixVoiture'>
-
-</form>
+    <?php 
+    if ($type == 'car') { 
+        echo " <input class='hidden' name='type' value='reserveCar'>";
+        echo "<input class='hidden' name='action' value='choixVoiture'>";
+    }else{
+         echo " <input class='hidden' name='type' value='reservation'>";
+         echo "<input class='hidden' name='action' value='choixVoiture'>";
+    }
+    
 ?>
+    </form>
+    ?>
 
 
-<?php include 'fragmentFooter.html'; ?>
+    <?php include 'fragmentFooter.html'; ?>

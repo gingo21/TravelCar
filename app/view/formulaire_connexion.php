@@ -17,7 +17,7 @@ if (!empty($erreurs_connexion)) {
 	
 	echo '</ul>';
 }
-
+echo 'bite';
 echo $form->form_open();
 echo $form->input_email('email','email:');
 echo $form->input_text('password','password:');

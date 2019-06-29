@@ -11,7 +11,6 @@
  *
  * @author francois
  */
-
 include CHEMIN_MODELE . 'modelAeroport.php';
 include CHEMIN_MODELE . 'modelParking.php';
 include CHEMIN_MODELE . 'modelCarOwner.php';
@@ -39,16 +38,46 @@ class ControllerReservation {
         }
         $_SESSION['parkindDateDeb'] = $date;
         $_SESSION['parkindDateFin'] = $date2;
-        
+
         //on recupere toutes les jours entre les 2 dates
-        $allDays = getDatesBetween($date,$date2);
-        foreach ($allDays as $oneDay){
-            $resultat = modelPark::readCarsByDayByParking($oneDay,$_POST["sel_airpot"]);
+// Function to get all the dates in given range 
+        function getDatesFromRange($start, $end, $format = 'Y-m-d') {
+
+            // Declare an empty array 
+            $array = array();
+
+            // Variable that store the date interval 
+            // of period 1 day 
+            $interval = new DateInterval('P1D');
+
+            $realEnd = new DateTime($end);
+            $realEnd->add($interval);
+
+            $period = new DatePeriod(new DateTime($start), $interval, $realEnd);
+
+            // Use loop to store date into array 
+            foreach ($period as $date) {
+                $array[] = $date->format($format);
+            }
+
+            // Return the array elements 
+            return $array;
+        }
+
+// Function call with passing the start date and end date 
+        $allDays = getDatesFromRange($date, $date2);
+
+        var_dump($Date);
+
+
+        foreach ($allDays as $oneDay) {
+            $resultat = modelPark::readCarsByDayByParking($oneDay, $_POST["sel_airpot"]);
             print_r($resultat);
         }
+        
         $resultsParking = modelParking::read($_POST["sel_airpot"]);
-        
-        
+
+
         require (CHEMIN_VUE . 'viewReserveParking2.php');
     }
 
@@ -91,8 +120,8 @@ class ControllerReservation {
         $date = $_SESSION['parkindDateDeb'];
         $date2 = $_SESSION['parkindDateFin'];
         $id_user = $_SESSION['id'];
-        echo $id_user. "qriniu";
-        echo "qgzq". $plate_id;
+        echo $id_user . "qriniu";
+        echo "qgzq" . $plate_id;
         $labelParking = $_SESSION['parking'];
         $price = $_SESSION['price'];
         modelPark::insert($plate_id, $labelParking, $id_user, $date, $date2, $price);

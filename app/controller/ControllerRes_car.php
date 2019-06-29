@@ -37,13 +37,10 @@ class ControllerRes_car {
         if (isset($_POST['date2'])) {
             $date2 = $_POST['date2'];
         }
-        $_SESSION['parkindDateDeb'] = $date;
-        $_SESSION['parkindDateFin'] = $date2;
+        $_SESSION['carDateDeb'] = $date;
+        $_SESSION['carDateFin'] = $date2;
 
-        $test = false;
-        if ($test) {
-            ControllerReservation::reserveParking();
-        }
+     
 
         if (isset($_POST["sel_airpot"])) {
             $resultsParking = modelParking::read($_POST["sel_airpot"]);
@@ -61,28 +58,23 @@ class ControllerRes_car {
         $labelParking = $_POST['sel_parking'];
         $price_parking = modelParking::readPrice($labelParking);
 
-        $_SESSION['parking'] = $labelParking;
+        $_SESSION['parking_car'] = $labelParking;
         //calculons le prix
-        $datetime1 = new DateTime($_SESSION['parkindDateDeb']);
-        $datetime2 = new DateTime($_SESSION['parkindDateFin']);
+        $datetime1 = new DateTime($_SESSION['carDateDeb']);
+        $datetime2 = new DateTime($_SESSION['carDateFin']);
         $interval = $datetime1->diff($datetime2);
         print_r($interval->d);
         print_r($price_parking);
         $price_total = $price_parking[0] * $interval->d;
-        $_SESSION['price'] = $price_total;
+        $_SESSION['price_car'] = $price_total;
 
-
-        //on vérifie si l'utilisateur est propriétaire d'une voiture
-
-        $id_user = $_SESSION['id'];
-        $results = null;
-        echo("$id_user");
-        $results = modelCarOwner::readVehiculeId($id_user);
-        print_r($results);
-        require (CHEMIN_VUE . 'viewReserveParking3.php');
+        // ON Recupere les voitures qui sont disponibles dans ce parking pour cette periode
+         $results = modelPark::carsReadyToRent($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
+      
+        require (CHEMIN_VUE . 'viewReserveCar3.php');
     }
 
-    public static function endParkingReservation() {
+    public static function endCarReservation() {
         session_start();
 
         // on stocke tout dans la base de données

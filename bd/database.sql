@@ -78,7 +78,8 @@ CREATE TABLE IF NOT EXISTS car_owner (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 INSERT INTO car_owner (plate_id, car_owner_id, date_start, date_end) VALUES
-('Z0PP56KT',1,'2019-05-25',NULL);
+('Z0PP56KT',1,'2019-05-25',NULL),
+('IEFUOFEN',3,'2019-05-31',NULL);
 
 DROP TABLE IF EXISTS rent;
 CREATE TABLE IF NOT EXISTS rent (
@@ -113,8 +114,8 @@ CREATE TABLE IF NOT EXISTS park (
 
 
 
-INSERT INTO park (plate_id, label_parking, car_owner_id, date_debut, date_fin) VALUES
-('Z0PP56KT', 'Parking Roissy',1,'2019-05-25 00:00:00', '2019-05-26 00:00:00');
+INSERT INTO park (plate_id, label_parking, car_owner_id, date_debut, date_fin,price) VALUES
+('Z0PP56KT', 'Parking Roissy',1,'2019-05-25', '2019-05-26',12);
 
 
 DROP TRIGGER IF EXISTS increment_places_parking;

@@ -77,7 +77,7 @@ class modelPark {
         try {
             $database = SModel::getInstance();
             $query = "
-            select label_parking, count(plate_id) as n as from park 
+            select label_parking, count(plate_id) as n from park 
             where :date between date_debut and date_fin 
             and label_parking in
             ( select label from parking where airport = :airport)
@@ -101,5 +101,35 @@ class modelPark {
             return NULL;
         }
     }
+    
+    public static function carsReadyToRent($date_debut,$date_fin,$label_parking){
+        try {
+            $database = SModel::getInstance();
+            $query = "
+            select plate_id from park 
+            where :date_debut > date_debut and :date_fin < date_fin
+            and label_parking = :label_parking
+            and plate_id not in 
+            ( select plate_id from rent
+             where :date_debut > date_debut and :date_fin < date_fin)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'date_debut' => $date_debut,
+                'date_fin' => $date_fin,
+                'label_parking' =>$label_parking
+            ]);
+            $results = array();
+            
+            while ($tuple = $statement->fetch()) {
+                $results[] = $tuple;
+            }
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+          
+        
 
 }
