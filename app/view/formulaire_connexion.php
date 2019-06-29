@@ -23,15 +23,20 @@ echo 'bite';
 echo $form->form_open();
 echo $form->input_email('email','email:');
 echo $form->input_text('password','password:');
-echo $form->input_hidden('action','connexion');
+echo $form->input_hidden('action','connexion2');
+echo $form->input_hidden('type','user');
+
 ?>
 <p>Pas encore inscrit : cliquer ici </p>
 <a class="btn btn-primary" href="../controller/router.php?action=inscription&type=user" role="button">Incription</a>
 <?php
 echo $form->input_submit();
 echo $form->form_close();
-
 $form->required = '*';
+$_SESSION['form'] = $form;
+print_r($_SESSION['form']);
+
+
 ?>
 <form>
   <div class="form-group">
