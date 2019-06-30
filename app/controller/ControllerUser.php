@@ -43,6 +43,33 @@ class ControllerUser {
 //                require ('../view/viewAccueil.php');
     }
 
+    public static function modifyPassword() {
+        session_start();
+        require ('../view/viewFormModifyPassword.php');
+    }
+
+    public static function handleModifyPassword() {
+        session_start();
+        echo 'step';
+        if (isset($_POST['passwordOld'])) {
+
+            $id_user = ModelUser::connexion_ok($_SESSION['email'], sha1($_POST['passwordOld']));
+            print_r('arsvyjwelifuwiuelf');
+        }
+        print_r($id_user);
+        print_r('arsvyjwelifuwiuelf');
+
+        if ($_SESSION['id'] == $id_user && isset($_POST['password']) && isset($_POST['password2'])) {
+            echo 'step1';
+
+            if ($_POST['password'] == $_POST['password2']) {
+                echo 'modif';
+                modelUser::modifyPassword($_SESSION['id'], sha1($_POST['password']));
+            }
+        }
+        require ('../view/viewAccueilUser.php');
+    }
+
     public static function inscription() {
         session_start();
 
@@ -62,7 +89,7 @@ class ControllerUser {
         $results = ModelUser::insert($_POST['lname'], $_POST['fname'], $_POST['telephone'], sha1($_POST['passwd']),
                         $_POST['email'], "client");
 
-        $id_user = ModelUser::connexion_ok($_POST['email'], $_POST['passwd']);
+        $id_user = ModelUser::connexion_ok($_POST['email'], sha1($_POST['passwd']));
         $_SESSION['id'] = $id_user;
         include CHEMIN_VUE . 'viewFormCar.php';
     }
@@ -116,4 +143,5 @@ class ControllerUser {
             $erreurs_connexion[] = "Couple nom d'utilisateur / mot de passe inexistant.";
         }
     }
+
 }

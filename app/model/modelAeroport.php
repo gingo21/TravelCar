@@ -68,6 +68,23 @@ class modelAeroport{
             return NULL;
         }
     }
+    
+           public static function insert($a, $b, $c) {
+        try {
+            $database = SModel::getInstance();
+            $query = "insert into airport value (:a, :b, :c)";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'a' => $a,
+                'b' => $b,
+                'c' => $c,
+            ]);
+            return TRUE;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return FALSE;
+        }
+    }
 }
 
     

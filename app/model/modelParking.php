@@ -75,7 +75,7 @@ class modelParking {
             $query = "insert into parking value (:label, :airport, :dayPrice, :numberMax)";
             $statement = $database->prepare($query);
             $statement->execute([
-                'id' => $label,
+                'label' => $label,
                 'airport' => $airport,
                 'dayPrice' => $dayPrice,
                 'numberMax' => $numberMax
@@ -102,5 +102,7 @@ class modelParking {
             return NULL;
         }
     }
+    
+
 
 }

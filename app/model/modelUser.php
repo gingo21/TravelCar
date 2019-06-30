@@ -84,6 +84,23 @@ class modelUser {
             return FALSE;
         }
     }
+    
+    public static function modifyPassword($id, $password) {
+        try {
+            $database = SModel::getInstance();
+            $query = "UPDATE user SET password =:password
+            WHERE id=:id ";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+                'password' => $password,
+            ]);
+            return TRUE;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return FALSE;
+        }
+    }
 
     public static function connexion_ok($email, $password) {
 
