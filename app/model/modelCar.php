@@ -6,14 +6,7 @@
  * and open the template in the editor.
  */
 
-//DROP TABLE IF EXISTS car;
-//CREATE TABLE IF NOT EXISTS car (
-//	plate_id VARCHAR(15),
-//	brand VARCHAR(15),
-//	modele varchar(15),
-//	color_car ENUM("blue","red","green","grey"),
-//	PRIMARY KEY(plate_id)
-//) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
 
 class modelCar {
 

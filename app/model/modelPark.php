@@ -185,7 +185,7 @@ class modelPark {
             where DATE :date_DebR > date_debut and DATE :date_finR < date_fin
             group by label_parking) as table2 
             ON parking.label = table2.label_parking
- where airport = :airport ";
+            where airport = :airport ";
             $statement = $database->prepare($query);
             $statement->execute([
                 'date_DebR' => $date_debR,
@@ -251,6 +251,38 @@ class modelPark {
             and plate_id not in 
             ( select plate_id from rent
              where :date_debut > date_debut and :date_fin < date_fin)"
+            ;
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'date_debut' => $date_debut,
+                'date_fin' => $date_fin,
+                'label_parking' =>$label_parking
+            
+            ]);
+            $results = array();
+            while ($tuple = $statement->fetch()) {
+                $results[] = $tuple[0];
+            }
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+        public static function carsReadyToRentAvancee($date_debut,$date_fin,$label_parking){
+        try {
+            print_r($date_fin);
+            $database = SModel::getInstance();
+            $query = "
+            select plate_id from park 
+            where :date_debut > date_debut and :date_fin  < date_fin
+            and label_parking = :label_parking
+	   and plate_id not in
+            (select plate_id from rent
+            where NOT (:date_debut < date_start and :date_fin < date_start) AND
+		    not(:date_debut > date_end and :date_fin > date_end)
+    ) "
             ;
             $statement = $database->prepare($query);
             $statement->execute([

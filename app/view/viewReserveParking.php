@@ -1,7 +1,4 @@
 <?php
-;
-$test = session_id();
-echo ($test);
 
 require ('fragmentHeader.html');
 

@@ -75,7 +75,7 @@ class ControllerRes_car {
         print_r(gettype($_SESSION['carDateFin']));
         print_r($labelParking);
         // ON Recupere les voitures qui sont disponibles dans ce parking pour cette periode
-         $results = modelPark::carsReadyToRent($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
+         $results = modelPark::carsReadyToRentAvancee($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
          print_r($results);
         require (CHEMIN_VUE . 'viewReserveCar3.php');
     }
