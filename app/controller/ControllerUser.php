@@ -123,7 +123,6 @@ class ControllerUser {
 //                 echo $var;
 
             $infos_user = ModelUser::lire_infos_utilisateur($id_user);
-            session_start();
             // On enregistre les informations dans la session
             $_SESSION['id'] = $id_user;
             $_SESSION['email'] = $infos_user['email'];

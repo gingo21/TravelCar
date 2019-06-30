@@ -39,7 +39,7 @@
             </div>
         </li>
         <?php
-
+   
         function isconnected() {
             if ($_SESSION['id'] != null) {
                 return true;
