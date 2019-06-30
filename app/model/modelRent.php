@@ -12,9 +12,79 @@
  * @author francois
  */
 class modelRent {
-    
+
+    function getPlate_id() {
+        return $this->plate_id;
+    }
+
+    function getLabel_parking() {
+        return $this->label_parking;
+    }
+
+    function getRenter_id() {
+        return $this->renter_id;
+    }
+
+    function getDate_start() {
+        return $this->date_start;
+    }
+
+    function getDate_end() {
+        return $this->date_end;
+    }
+
+    function setPlate_id($plate_id) {
+        $this->plate_id = $plate_id;
+    }
+
+    function setLabel_parking($label_parking) {
+        $this->label_parking = $label_parking;
+    }
+
+    function setRenter_id($renter_id) {
+        $this->renter_id = $renter_id;
+    }
+
+    function setDate_start($date_start) {
+        $this->date_start = $date_start;
+    }
+
+    function setDate_end($date_end) {
+        $this->date_end = $date_end;
+    }
+
     //put your code here
-    private $plate_id, $label_parking, $renter_id, $date_start, $date_end;
+    private $plate_id, $label_parking, $renter_id, $date_start, $date_end, $price;
+    function getPrice() {
+        return $this->price;
+    }
+
+    function setPrice($price) {
+        $this->price = $price;
+    }
+
+        
+    
+    function view() {
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
+                $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_start(), $this->getDate_end(), $this->getPrice());
+    }
+
+    public static function read($a) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select * from rent where renter_id = :a";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'a' => $a
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelRent");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 
     public static function insert($plate_id, $label_parking, $renter_id, $date_start, $date_end, $price) {
         try {
@@ -91,7 +161,7 @@ class modelRent {
                 'airport' => $airport
             ]);
             $results = array();
-            
+
             while ($tuple = $statement->fetch()) {
                 $results[] = $tuple;
             }
@@ -101,8 +171,8 @@ class modelRent {
             return NULL;
         }
     }
-    
-    public static function carsReadyToRent($date_debut,$date_fin,$label_parking){
+
+    public static function carsReadyToRent($date_debut, $date_fin, $label_parking) {
         try {
             print_r($date_fin);
             $database = SModel::getInstance();
@@ -118,8 +188,7 @@ class modelRent {
             $statement->execute([
                 'date_debut' => $date_debut,
                 'date_fin' => $date_fin,
-                'label_parking' =>$label_parking
-            
+                'label_parking' => $label_parking
             ]);
             $results = array();
             while ($tuple = $statement->fetch()) {
@@ -131,7 +200,5 @@ class modelRent {
             return NULL;
         }
     }
-          
-        
 
 }

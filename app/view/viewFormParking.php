@@ -49,6 +49,7 @@ form_select("Sélection aéroport", "sel_airport", $results);
                 <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
             </div>
         </form>
+        
     </div>
 </div>
 </div>

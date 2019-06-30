@@ -20,7 +20,7 @@ require CHEMIN_LIB . 'php_forms.php';
             <div class="control-group">
                 <div class="form-group  controls">
                     <label >Ancien mot de passe</label>
-                    <input type="password" class="form-control"  id="passwordOld" name='passwordOld'  required data-validation-required-message="Please enter">
+                    <input type="password" class="form-control"  id="passwordOld" name='w'  required data-validation-required-message="Please enter">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>

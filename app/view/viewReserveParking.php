@@ -16,7 +16,8 @@ require CHEMIN_LIB . 'php_forms.php';
  */
 ?>
 <div class = "container">
-    <h2>Réservation d'un parking</h2>
+    
+    <h2>Réservation d'un<?php echo $name?></h2>
     <form class="form-inline" action= "../controller/router.php" method="post">
         <?php
         form_select("Sélection aéroport", "sel_airpot", $results);

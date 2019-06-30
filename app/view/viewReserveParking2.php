@@ -38,14 +38,14 @@ require CHEMIN_LIB . 'php_forms.php';
     <button type="submit" class="btn btn-default">Submit</button>
     <?php 
     if ($type == 'car') { 
-        echo " <input class='hidden' name='type' value='reserveCar'>";
-        echo "<input class='hidden' name='action' value='choixVoiture'>";
+        echo " <input type='hidden' name='type' value='reserveCar'>";
+        echo "<input type='hidden' name='action' value='choixVoiture'>";
     }else{
-         echo " <input class='hidden' name='type' value='reservation'>";
-         echo "<input class='hidden' name='action' value='choixVoiture'>";
+         echo " <input type='hidden' name='type' value='reservation'>";
+         echo "<input type='hidden' name='action' value='choixVoiture'>";
     }
     
-?>
+
     </form>
     ?>
 

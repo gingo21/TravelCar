@@ -22,15 +22,21 @@
         </li>
         <li class=" dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Réservations
+                Parking
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="../controller/router.php?action=reserveParking&type=reservation">Parking</a>
+                <a class="dropdown-item" href="../controller/router.php?action=printreservation&type=reservation">Mes réservations</a>
+            </div>
+        </li>
+         <li class=" dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Voiture
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="../controller/router.php?action=reserveCar&type=reserveCar">Réserver Voiture</a>
+                <a class="dropdown-item" href="../controller/router.php?action=printReservation&type=reserveCar">Mes réservations</a>
 
-                <a class="dropdown-item" href="#">Chasseurs</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Autres témoignages</a>
             </div>
         </li>
         <?php

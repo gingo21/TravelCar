@@ -21,6 +21,7 @@ class ControllerReservation {
     //put your code here
     public static function reserveParking() {
         $type = 'parking';
+        $name = ' parking';
         $results = ModelAeroport::readAllAcr();
         require (CHEMIN_VUE . 'viewReserveParking.php');
     }
@@ -74,7 +75,7 @@ class ControllerReservation {
             $resultat = modelPark::readCarsByDayByParking($oneDay, $_POST["sel_airpot"]);
             print_r($resultat);
         }
-        
+
         $resultsParking = modelParking::read($_POST["sel_airpot"]);
 
 
@@ -127,5 +128,39 @@ class ControllerReservation {
         modelPark::insert($plate_id, $labelParking, $id_user, $date, $date2, $price);
         require (CHEMIN_VUE . 'viewReserveParkingDone.php');
     }
+
+    public static function printreservation() {
+        session_start();
+        $type = 'parking';
+        $controller = 'reservation';
+        $test = $_SESSION['id'];
+        print_r($test);
+        $resultat = modelPark::read((int) $test);
+        $colnames = array("Plate ID", "Parking", "Date Début", "Date fin", "prix");
+        require (CHEMIN_VUE . 'viewReservationUser.php');
+    }
+
+    public static function delete() {
+        session_start();
+        $type = 'parking';
+        
+        $date = date('Y/m/d');
+        $colnames = array("id","Plate ID", "Parking", "Date Début", "Date fin", "prix");
+
+        $results = modelPark::readSupprimable($_SESSION['id'],$date);
+        print_r($results);
+        require (CHEMIN_VUE . 'viewDeleteReservation.php');
+    }
+    
+     public static function deleteData() {
+        session_start();
+        $type = 'parking';
+        if (isset($_POST['reservation_id'])) {
+            modelPark::delete($_POST['reservation_id']);
+        }
+
+        require (CHEMIN_VUE . 'viewAccueilUser.php');
+    }
+    
 
 }

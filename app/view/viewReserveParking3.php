@@ -6,7 +6,6 @@ include 'fragmentHeader.html';
 
 
 include 'fragmentMenuClient.php';
-include CHEMIN_MODELE . 'modelCar.php';
 
 require CHEMIN_LIB . 'php_forms.php';
 require CHEMIN_LIB . 'php_tables.php';

@@ -50,12 +50,12 @@ class modelCar {
         $this->color_car = $color_car;
     }
 
-        function viewCar() {
+    function viewCar() {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
                 $this->getplate_id(), $this->getbrand(), $this->getmodele(), $this->getcolor_car());
     }
-  
- //on récupère les informations d'une voiture à partir de sa plaque d'immatriculation
+
+    //on récupère les informations d'une voiture à partir de sa plaque d'immatriculation
         public static function read($plate_id) {
         try {
             $database = SModel::getInstance();

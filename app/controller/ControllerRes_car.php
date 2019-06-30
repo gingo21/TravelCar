@@ -22,6 +22,7 @@ class ControllerRes_car {
     //put your code here
     public static function reserveCar() {
         $type = 'car';
+           $name = 'e voiture';
         $results = ModelAeroport::readAllAcr();
         require (CHEMIN_VUE . 'viewReserveParking.php');
     }
@@ -30,6 +31,7 @@ class ControllerRes_car {
         //vérifier la validation des données au préalable
         //stockage dans variable de session
         $type = 'car';
+     
         session_start();
 
         if (isset($_POST['date'])) {
@@ -96,6 +98,17 @@ class ControllerRes_car {
         print_r($labelParking);
         modelRent::insert($plate_id, $id_user, $labelParking, $date, $date2, $price);
         require (CHEMIN_VUE . 'viewReserveCarDone.php');
+    }
+    
+       public static function printreservation(){
+        session_start();
+        $type = 'car';
+        $test = $_SESSION['id'];
+        print_r($test);
+        $resultat = modelRent::read($_SESSION['id']);
+        $colnames = array("Plate ID", "Parking", "Date Début", "Date fin","prix");
+         include (CHEMIN_VUE . 'viewReservationUser.php');
+
     }
 
 }

@@ -14,7 +14,123 @@
 class modelPark {
 
     //put your code here
-    private $plate_id, $label_parking, $car_owner_id, $date_debut, $date_fin;
+    private $park_id, $plate_id, $label_parking, $car_owner_id, $date_debut, $date_fin, $price;
+    function getPark_id() {
+        return $this->park_id;
+    }
+
+    function setPark_id($park_id) {
+        $this->park_id = $park_id;
+    }
+
+        function getPrice() {
+        return $this->price;
+    }
+
+    function setPrice($price) {
+        $this->price = $price;
+    }
+
+        
+    function getPlate_id() {
+        return $this->plate_id;
+    }
+
+    function getLabel_parking() {
+        return $this->label_parking;
+    }
+
+    function getCar_owner_id() {
+        return $this->car_owner_id;
+    }
+
+    function getDate_debut() {
+        return $this->date_debut;
+    }
+
+    function getDate_fin() {
+        return $this->date_fin;
+    }
+
+    function setPlate_id($plate_id) {
+        $this->plate_id = $plate_id;
+    }
+
+    function setLabel_parking($label_parking) {
+        $this->label_parking = $label_parking;
+    }
+
+    function setCar_owner_id($car_owner_id) {
+        $this->car_owner_id = $car_owner_id;
+    }
+
+    function setDate_debut($date_debut) {
+        $this->date_debut = $date_debut;
+    }
+
+    function setDate_fin($date_fin) {
+        $this->date_fin = $date_fin;
+    }
+
+        
+       function view() {
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
+                $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
+    }
+    
+       function view_id() {
+        printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
+                $this->getPark_id(),$this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
+    }
+
+    public static function read($a) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select * from park where car_owner_id = :a";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'a' => 3
+            ]);
+            $test = $statement->fetchAll(PDO::FETCH_CLASS, "modelPark");
+            return $test;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+        public static function readSupprimable($a,$b) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select * from park where car_owner_id = :a and date_debut > :b";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'a' => $a,
+                'b' => $b
+            ]);
+            $test = $statement->fetchAll(PDO::FETCH_CLASS, "modelPark");
+            return $test;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+        public static function delete($a) {
+        try {
+            $database = SModel::getInstance();
+            $query = "DELETE FROM park where park_id = :a";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'a' => $a
+             
+            ]);
+            return TRUE;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return FALSE;
+        }
+    }
 
     public static function insert($plate_id, $label_parking, $car_owner_id, $date_debut, $date_fin, $price) {
         try {
