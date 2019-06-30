@@ -89,7 +89,7 @@ class modelPark {
             $query = "select * from park where car_owner_id = :a";
             $statement = $database->prepare($query);
             $statement->execute([
-                'a' => 3
+                'a' => $a
             ]);
             $test = $statement->fetchAll(PDO::FETCH_CLASS, "modelPark");
             return $test;

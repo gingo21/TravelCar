@@ -10,5 +10,5 @@ include 'fragmentMenuClient.php';
   <p><?php echo $message; ?></p>
 
   <!--</$messagediv>-->
-
+</div>
 <?php include 'fragmentFooter.html'; ?>

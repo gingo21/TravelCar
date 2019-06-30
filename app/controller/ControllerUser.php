@@ -30,7 +30,7 @@ class ControllerUser {
     }
 
     public static function handleCarForm() {
-        session_start();
+        ;
         echo'hiiii';
         if (isset($_POST['plate_id']) && isset($_POST['brand']) && isset($_POST['modele'])) {
             echo('hiiiii@@@@');
@@ -44,12 +44,12 @@ class ControllerUser {
     }
 
     public static function modifyPassword() {
-        session_start();
+        ;
         require ('../view/viewFormModifyPassword.php');
     }
 
     public static function handleModifyPassword() {
-        session_start();
+        ;
         echo 'step';
         if (isset($_POST['passwordOld'])) {
 
@@ -71,7 +71,7 @@ class ControllerUser {
     }
 
     public static function inscription() {
-        session_start();
+        ;
 
 
         include CHEMIN_VUE . 'formulaire_inscription.php';
@@ -95,7 +95,7 @@ class ControllerUser {
     }
 
     public static function connexion() {
-        session_start();
+        ;
         require_once CHEMIN_LIB . 'formr/class.formr.php';
 
 // Création d'un tableau des erreurs
@@ -108,7 +108,7 @@ class ControllerUser {
     }
 
     public static function connexion2() {
-        session_start();
+        ;
         $test = $_SESSION['form'];
         $email = $test->post('email');
         $password = $test->post('password');

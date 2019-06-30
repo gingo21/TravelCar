@@ -11,7 +11,7 @@
 include 'global/config.php';
 
 // Utilisation et démarrage des sessions
-session_start();
+;
 
 
 

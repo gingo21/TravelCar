@@ -1,5 +1,5 @@
 <?php
-session_start();
+;
 $test = session_id();
 echo ($test);
 

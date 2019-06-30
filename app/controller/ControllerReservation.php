@@ -27,9 +27,10 @@ class ControllerReservation {
     }
 
     public static function reserveParkingStep2() {
+        $type= 'parking';
         //vérifier la validation des données au préalable
         //stockage dans variable de session
-        session_start();
+        ;
 
         if (isset($_POST['date'])) {
             $date = $_POST['date'];
@@ -68,12 +69,11 @@ class ControllerReservation {
 // Function call with passing the start date and end date 
         $allDays = getDatesFromRange($date, $date2);
 
-        var_dump($Date);
+    //    var_dump($Date);
 
 
         foreach ($allDays as $oneDay) {
             $resultat = modelPark::readCarsByDayByParking($oneDay, $_POST["sel_airpot"]);
-            print_r($resultat);
         }
 
         $resultsParking = modelParking::read($_POST["sel_airpot"]);
@@ -83,7 +83,7 @@ class ControllerReservation {
     }
 
     public static function choixVoiture() {
-        session_start();
+        ;
 
         //vérifier la validation des données au préalable
         //stockage dans variable de session
@@ -95,8 +95,6 @@ class ControllerReservation {
         $datetime1 = new DateTime($_SESSION['parkindDateDeb']);
         $datetime2 = new DateTime($_SESSION['parkindDateFin']);
         $interval = $datetime1->diff($datetime2);
-        print_r($interval->d);
-        print_r($price_parking);
         $price_total = $price_parking[0] * $interval->d;
         $_SESSION['price'] = $price_total;
 
@@ -105,14 +103,12 @@ class ControllerReservation {
 
         $id_user = $_SESSION['id'];
         $results = null;
-        echo("$id_user");
         $results = modelCarOwner::readVehiculeId($id_user);
-        print_r($results);
         require (CHEMIN_VUE . 'viewReserveParking3.php');
     }
 
     public static function endParkingReservation() {
-        session_start();
+        ;
 
         // on stocke tout dans la base de données
         if (isset($_POST['sel_car'])) {
@@ -121,45 +117,41 @@ class ControllerReservation {
         $date = $_SESSION['parkindDateDeb'];
         $date2 = $_SESSION['parkindDateFin'];
         $id_user = $_SESSION['id'];
-        echo $id_user . "qriniu";
-        echo "qgzq" . $plate_id;
         $labelParking = $_SESSION['parking'];
         $price = $_SESSION['price'];
         modelPark::insert($plate_id, $labelParking, $id_user, $date, $date2, $price);
-        require (CHEMIN_VUE . 'viewReserveParkingDone.php');
+        $message = 'Votre réservation a bien été effectuée.';
+        require (CHEMIN_VUE . 'viewMessage.php');
     }
 
     public static function printreservation() {
-        session_start();
         $type = 'parking';
         $controller = 'reservation';
         $test = $_SESSION['id'];
-        print_r($test);
         $resultat = modelPark::read((int) $test);
+        print_r($resultat);
         $colnames = array("Plate ID", "Parking", "Date Début", "Date fin", "prix");
         require (CHEMIN_VUE . 'viewReservationUser.php');
     }
 
     public static function delete() {
-        session_start();
+        ;
         $type = 'parking';
         
         $date = date('Y/m/d');
         $colnames = array("id","Plate ID", "Parking", "Date Début", "Date fin", "prix");
 
         $results = modelPark::readSupprimable($_SESSION['id'],$date);
-        print_r($results);
         require (CHEMIN_VUE . 'viewDeleteReservation.php');
     }
     
      public static function deleteData() {
-        session_start();
+        ;
         $type = 'parking';
         if (isset($_POST['reservation_id'])) {
             $price = modelPark::readPrice($_POST['reservation_id']);
-            print_r($price);
+            $print_price = $price[0] / 2;
             modelPark::delete($_POST['reservation_id']);
-            $print_price = $price[0]/2;
             $message = "Vous venez d'être remboursé de ".$print_price.' euros';
         }
 

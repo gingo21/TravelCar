@@ -127,7 +127,7 @@ img::-moz-selection {
   #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
   }
-  #mainNav .navbar-nav > li.dropdown > a {
+  #mainNav .navbar-nav > li > a {
     padding: 10px 20px;
     color: #fff;
   }

@@ -7,7 +7,7 @@ require_once 'ControllerReservation.php';
 require_once 'ControllerAdmin.php';
 require_once 'ControllerRes_car.php';
 
-
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $action = $_POST["action"];

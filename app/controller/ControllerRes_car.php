@@ -32,7 +32,7 @@ class ControllerRes_car {
         //stockage dans variable de session
         $type = 'car';
      
-        session_start();
+        ;
 
         if (isset($_POST['date'])) {
             $date = $_POST['date'];
@@ -54,7 +54,7 @@ class ControllerRes_car {
     }
 
     public static function choixVoiture() {
-        session_start();
+        ;
 
         //vérifier la validation des données au préalable
         //stockage dans variable de session
@@ -81,7 +81,7 @@ class ControllerRes_car {
     }
 
     public static function endCarReservation() {
-        session_start();
+        ;
 
         // on stocke tout dans la base de données
         if (isset($_POST['sel_car'])) {
@@ -90,8 +90,6 @@ class ControllerRes_car {
         $date = $_SESSION['carDateDeb'];
         $date2 = $_SESSION['carDateFin'];
         $id_user = $_SESSION['id'];
-        echo $id_user . "qriniu";
-        echo "qgzq" . $plate_id;
         $labelParking = $_SESSION['parking_car'];
         $price = $_SESSION['price_car'];
         print_r($id_user);
@@ -101,7 +99,7 @@ class ControllerRes_car {
     }
     
        public static function printreservation(){
-        session_start();
+        ;
         $type = 'car';
         $test = $_SESSION['id'];
         print_r($test);

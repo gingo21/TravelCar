@@ -1,7 +1,7 @@
 
 
 <?php require_once 'functions.php';
-    session_start();
+    ;
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -53,7 +53,7 @@
         }
 
         if (isconnected()) {
-            echo '<li><a href="../controller/router.php?action=deconnexion&type=user">Deconnexion</a></li>';
+            echo '<li><a href="../controller/router.php?action=deconnexion&type=user">Déconnexion</a></li>';
         } else {
             echo '<li><a href="../controller/router.php?action=connexion&type=user">Connexion</a></li>';
         }
