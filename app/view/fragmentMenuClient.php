@@ -1,7 +1,6 @@
 
 
-<?php require_once 'functions.php';
-        session_start();
+<?php require_once 'functions.php'
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">

@@ -18,6 +18,7 @@ require_once CHEMIN_MODELE . 'modelCar.php';
 class ControllerUser {
 
     public static function accueil() {
+        session_start();
         require ('../view/viewAccueil.php');
     }
 
