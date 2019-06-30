@@ -8,11 +8,12 @@
 require_once CHEMIN_MODELE . 'modelParking.php';
 
 class ControllerAdmin {
+    
     public static function addAirport(){
         require ('../view/viewFormAirport.php');
     }
     
-     public static function insertAirport(){
+    public static function insertAirport(){
         if (isset($_POST['acronym']) && isset($_POST['ville']) && isset($_POST['airport'])) {
             modelAeroport::insert($_POST['acronym'], $_POST['ville'], $_POST['airport']);
             $message = 'Aeroport ajoute!';
@@ -25,7 +26,7 @@ class ControllerAdmin {
         require ('../view/viewFormParking.php');
     }
     
-         public static function insertParking(){
+    public static function insertParking(){
         if (isset($_POST['label']) && isset($_POST['sel_airport']) && isset($_POST['price']) && isset($_POST['places'])) {
 //        print_r($_POST['label']) ;
         echo  'jsalberi';
@@ -39,5 +40,10 @@ class ControllerAdmin {
         require ('../view/viewAccueilAdmin.php');
     }
     
+    public static function viewParks() {
+        $results = modelPark::readAll();
+        $colnames = array("User ID", "Plate ID", "Parking", "Date Début", "Date fin", "prix");
+        require (CHEMIN_VUE . 'viewParksAndUsers.php');
+    }
 }
 
