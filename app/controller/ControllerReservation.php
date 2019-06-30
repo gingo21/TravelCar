@@ -156,10 +156,14 @@ class ControllerReservation {
         session_start();
         $type = 'parking';
         if (isset($_POST['reservation_id'])) {
+            $price = modelPark::readPrice($_POST['reservation_id']);
+            print_r($price);
             modelPark::delete($_POST['reservation_id']);
+            $print_price = $price[0]/2;
+            $message = "Vous venez d'être remboursé de ".$print_price.' euros';
         }
 
-        require (CHEMIN_VUE . 'viewAccueilUser.php');
+        require (CHEMIN_VUE . 'viewMessage.php');
     }
     
 

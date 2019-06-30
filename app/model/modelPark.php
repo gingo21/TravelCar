@@ -99,6 +99,28 @@ class modelPark {
         }
     }
     
+        public static function readPrice($a) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select price from park where park_id = :a";       
+            $statement = $database->prepare($query);
+             $statement->execute([
+                'a' => $a
+             
+            ]);
+            $results = array();
+            while ($tuple = $statement->fetch()) {
+                $results[] = $tuple[0];
+            }
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+    
+    
         public static function readSupprimable($a,$b) {
         try {
             $database = SModel::getInstance();

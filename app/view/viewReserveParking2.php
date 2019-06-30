@@ -46,8 +46,8 @@ require CHEMIN_LIB . 'php_forms.php';
     }
     
 
-    </form>
     ?>
 
+ </form>
 
     <?php include 'fragmentFooter.html'; ?>

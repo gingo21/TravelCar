@@ -38,6 +38,8 @@
 
             </div>
         </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
         <?php
    
         function isconnected() {
