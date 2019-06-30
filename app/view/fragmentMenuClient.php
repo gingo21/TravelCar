@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="navbar-header">
-        <a class="navbar-brand" href="../controller/router.php?action=accueil&controlleur=utilisateur">TravelCar</a>
+        <a class="navbar-brand" href="../controller/router.php?action=accueil&type=user">TravelCar</a>
     </div>
     <ul class="nav navbar-nav">
         <li class="dropdown">
@@ -40,9 +40,9 @@
             </div>
         </li>
         <?php
-
+   
         function isconnected() {
-            if ($_SESSION[id] != null) {
+            if ($_SESSION['id'] != null) {
                 return true;
             } else {
                 return false;
