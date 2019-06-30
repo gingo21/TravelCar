@@ -8,7 +8,7 @@
     <div class="navbar-header">
         <a class="navbar-brand" href="../controller/router.php?action=accueil&type=user">TravelCar</a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav mr-auto">
         <li class="dropdown">
             <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Mon compte
@@ -40,6 +40,8 @@
 
             </div>
         </li>
+    </ul>
+    <ul class="nav navbar-nav">
         <?php
    
         function isconnected() {
