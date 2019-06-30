@@ -73,14 +73,19 @@ class modelPark {
     }
 
         
-       function view() {
+    function view() {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
-                $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
+            $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
     }
     
-       function view_id() {
+    function view_id() {
         printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
-                $this->getPark_id(),$this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
+            $this->getPark_id(),$this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
+    }
+    
+    function view_owner() {
+        printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
+            $this->getCar_owner_id(),$this->getPlate_id(), $this->getLabel_parking(), $this->getDate_debut(), $this->getDate_fin(), $this->getPrice());
     }
 
     public static function read($a) {
@@ -99,7 +104,21 @@ class modelPark {
         }
     }
     
-        public static function readPrice($a) {
+    public static function readAll() {
+        try {
+            $database = SModel::getInstance();
+            $query = "select * from park";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $test = $statement->fetchAll(PDO::FETCH_CLASS, "modelPark");
+            return $test;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+    public static function readPrice($a) {
         try {
             $database = SModel::getInstance();
             $query = "select price from park where park_id = :a";       
