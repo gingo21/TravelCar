@@ -98,14 +98,13 @@ class ControllerRes_car {
         require (CHEMIN_VUE . 'viewReserveCarDone.php');
     }
     
-       public static function printreservation(){
-        ;
-        $type = 'car';
-        $test = $_SESSION['id'];
-        print_r($test);
-        $resultat = modelRent::read($_SESSION['id']);
-        $colnames = array("Plate ID", "Parking", "Date Début", "Date fin","prix");
-         include (CHEMIN_VUE . 'viewReservationUser.php');
+        public static function printreservation(){
+            $type = 'car';
+            $test = $_SESSION['id'];
+            print_r($test);
+            $resultat = modelRent::read($_SESSION['id']);
+            $colnames = array("Plate ID", "Parking", "Date Début", "Date fin","prix");
+             include (CHEMIN_VUE . 'viewReservationUser.php');
 
     }
 
