@@ -16,14 +16,14 @@ require CHEMIN_LIB . 'php_forms.php';
         <form name="sentMessage" id="contactForm" method='post' action = '../controller/router.php' novalidate>
             <div class="control-group">
                 <div class="form-group  controls">
-                    <label for="plate_id">Email address</label>
+                    <label for="plate_id">Plaque d'immatriculation</label>
                     <input type="text" class="form-control"  id="plate_id" placeholder="Plaque d'immatriculation" name='plate_id' required data-validation-required-message="Please enter">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
             <div class="control-group">
             </div>
-            Ï <div class="form-group  controls">
+            <div class="form-group  controls">
                 <label>Marque </label>
                 <input type="text" class="form-control"  id="brand" name='brand' placeholder="Marque" required data-validation-required-message="Please enter">
                 <p class="help-block text-danger"></p>
@@ -35,7 +35,7 @@ require CHEMIN_LIB . 'php_forms.php';
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
-            <input tyoe='hidden' name='type' value='user'>
+            <input type='hidden' name='type' value='user'>
             <input type='hidden' name='action' value='handleCarForm'>
 
             <div id="success"></div>

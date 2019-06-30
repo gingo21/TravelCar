@@ -19,6 +19,6 @@ include 'fragmentMenuClient.php';
 <button type="button" class="btn btn-outline-dark">Dark</button>
 
 
-include 'fragmentFooter.html';
+<?php include 'fragmentFooter.html';
 
 

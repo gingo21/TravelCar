@@ -110,7 +110,6 @@ class ControllerUser {
     public static function connexion2() {
         session_start();
         $test = $_SESSION['form'];
-        print_r($test);
         $email = $test->post('email');
         $password = $test->post('password');
 
