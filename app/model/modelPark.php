@@ -291,7 +291,6 @@ class modelPark {
     
         public static function carsReadyToRentAvancee($date_debut,$date_fin,$label_parking){
         try {
-            print_r($date_fin);
             $database = SModel::getInstance();
             $query = "
             select plate_id from park 
