@@ -25,7 +25,6 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="../controller/router.php?action=viewParks&type=admin">Voir les réservations</a>
-                <a class="dropdown-item" href="../controller/router.php?action=viewUsers&type=admin">Voir les utilisateurs</a>
             </div>
         </li>
     </ul>

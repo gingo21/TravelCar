@@ -96,7 +96,6 @@ class ControllerRes_car {
             $type = 'car';
             $controller = 'reserveCar';
             $test = $_SESSION['id'];
-            print_r($test);
             $resultat = modelRent::read($_SESSION['id']);
             $colnames = array("Plate ID", "Parking", "Date Début", "Date fin","prix");
              include (CHEMIN_VUE . 'viewReservationUser.php');
