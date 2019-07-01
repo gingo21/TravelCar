@@ -131,7 +131,6 @@ class ControllerReservation {
     }
 
     public static function delete() {
-        ;
         $type = 'parking';
         
         $date = date('Y/m/d');
@@ -142,7 +141,6 @@ class ControllerReservation {
     }
     
      public static function deleteData() {
-        ;
         $type = 'parking';
         if (isset($_POST['reservation_id'])) {
             $price = modelPark::readPrice($_POST['reservation_id']);

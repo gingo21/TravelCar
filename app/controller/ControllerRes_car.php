@@ -26,6 +26,11 @@ class ControllerRes_car {
         $results = ModelAeroport::readAllAcr();
         require (CHEMIN_VUE . 'viewReserveParking.php');
     }
+    
+     public static function delete() {
+        $message ='bientôt disponible';
+        require (CHEMIN_VUE . 'viewMessage.php');
+    }
 
     public static function reserveCarStep2() {
         //vérifier la validation des données au préalable
