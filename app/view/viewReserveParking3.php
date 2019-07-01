@@ -12,6 +12,7 @@ require CHEMIN_LIB . 'php_tables.php';
 
 
 if ($results != null) {
+    echo'<div class="col-lg-8 col-md-10 mx-auto">';
     require (CHEMIN_VUE . 'viewPrintCars.php');
     echo("</tbody>");
     echo("</table>");
@@ -37,7 +38,8 @@ if ($results != null) {
 
     echo("</form>");
 }
-?>
 
+?>
+</div>
 
 <?php include 'fragmentFooter.html'; ?>
