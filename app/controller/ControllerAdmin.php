@@ -34,7 +34,6 @@ class ControllerAdmin {
 
             modelParking::insert($_POST['label'], $_POST['sel_airport'], $_POST['price'],$_POST['places']);
             $message = 'Parking ajoute!';
-            echo'test';
         }
         require ('../view/viewAccueilAdmin.php');
     }

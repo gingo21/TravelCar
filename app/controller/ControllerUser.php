@@ -52,16 +52,10 @@ class ControllerUser {
     }
 
     public static function handleModifyPassword() {
-        ;
-        echo 'step';
         if (isset($_POST['passwordOld'])) {
 
             $id_user = ModelUser::connexion_ok($_SESSION['email'], sha1($_POST['passwordOld']));
-            print_r('arsvyjwelifuwiuelf');
         }
-        print_r($id_user);
-        print_r('arsvyjwelifuwiuelf');
-
         if ($_SESSION['id'] == $id_user && isset($_POST['password']) && isset($_POST['password2'])) {
             echo 'step1';
 
@@ -74,13 +68,11 @@ class ControllerUser {
     }
 
     public static function inscription() {
-        ;
-
-
         include CHEMIN_VUE . 'formulaire_inscription.php';
     }
 
     public static function InscriptionDone() {
+        $form = $_SESSION['form'];
 
         $email = $form->post('email', 'Email', 'valid_email');
         $password = $form->post('passwd', 'Password', 'min_length[6]|hash');
@@ -98,7 +90,6 @@ class ControllerUser {
     }
 
     public static function connexion() {
-        ;
         require_once CHEMIN_LIB . 'formr/class.formr.php';
 
 // Création d'un tableau des erreurs
@@ -111,7 +102,7 @@ class ControllerUser {
     }
 
     public static function connexion2() {
-        ;
+        
         $test = $_SESSION['form'];
         $email = $test->post('email');
         $password = $test->post('password');
