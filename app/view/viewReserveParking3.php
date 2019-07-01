@@ -33,8 +33,8 @@ if ($results != null) {
     echo("<p>Vous n'avez pas encore enregistré de voiture dans votre compte : cliquer pour ajouter une voiture</p>") . "\n";
     echo("<form class = 'form-group' action = '../controller/router.php' method = 'post'>");
     echo("<button type='submit' class='btn btn-default'>Submit</button>");
-    echo("<input class='hidden' name='type' value='client'>");
-    echo("<input class='hidden' name='action' value='ajouterVoiture'>");
+    echo("<input type='hidden' name='type' value='client'>");
+    echo("<input type='hidden' name='action' value='ajouterVoiture'>");
 
     echo("</form>");
 }

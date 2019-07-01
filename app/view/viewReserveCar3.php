@@ -12,6 +12,7 @@ require CHEMIN_LIB . 'php_tables.php';
 
 
 if ($results != null) {
+    echo'<div class="col-lg-8 col-md-10 mx-auto">';
     require (CHEMIN_VUE . 'viewPrintCars.php');
     echo("</tbody>");
     echo("</table>");
@@ -29,14 +30,15 @@ if ($results != null) {
     echo("<input type='hidden' name='action' value='endCarReservation'>");
 
     echo("</form>");
+    echo '</div>';
 } else {
     echo("<p>Aucune voiture disponible ce jour-ci dans ce parking </p>") . "\n";
-    echo("<form class = 'form-group' action = '../controller/router.php' method = 'post'>");
-    echo("<button type='submit' class='btn btn-default'>Submit</button>");
-    echo("<input class='hidden' name='type' value='client'>");
-    echo("<input class='hidden' name='action' value='ajouterVoiture'>");
-
-    echo("</form>");
+//    echo("<form class = 'form-group' action = '../controller/router.php' method = 'post'>");
+//    echo("<button type='submit' class='btn btn-default'>Submit</button>");
+//    echo("<input type='hidden' name='type' value='client'>");
+//    echo("<input type='hidden' name='action' value='ajouterVoiture'>");
+//
+//    echo("</form>");
 }
 ?>
 
