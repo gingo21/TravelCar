@@ -17,7 +17,7 @@ if ($results != null) {
     echo("</tbody>");
     echo("</table>");
 
-    echo ' <p>Prix total : ' . $price_total . ' € = ' . $interval->d . ' * ' . $price_parking .' </p>';
+    echo ' <p>Prix total : ' . $price_total . ' € = ' . $interval->d . ' * ' . $price_parking[0] .' </p>';
 
     echo(" <p>Prix total : ") . $price_total . (" €</p>");
     echo(" <p>Appuyer sur valider pour confirmer la réservation de la voiture choisi entre le ") . $_SESSION['carDateDeb'] .

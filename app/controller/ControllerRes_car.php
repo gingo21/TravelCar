@@ -22,7 +22,7 @@ class ControllerRes_car {
     //put your code here
     public static function reserveCar() {
         $type = 'car';
-           $name = 'e voiture';
+         $name = 'e voiture';
         $results = ModelAeroport::readAllAcr();
         require (CHEMIN_VUE . 'viewReserveParking.php');
     }
@@ -36,9 +36,6 @@ class ControllerRes_car {
         //vérifier la validation des données au préalable
         //stockage dans variable de session
         $type = 'car';
-     
-        ;
-
         if (isset($_POST['date'])) {
             $date = $_POST['date'];
         }
@@ -53,14 +50,11 @@ class ControllerRes_car {
         if (isset($_POST["sel_airpot"])) {
             $resultsParking = modelParking::read($_POST["sel_airpot"]);
             $resultsCarsByParking = modelPark::readCarsByParking($_POST["sel_airpot"], $date, $date2);
-            print_r($resultsCarsByParking);
         }
         require (CHEMIN_VUE . 'viewReserveParking2.php');
     }
 
     public static function choixVoiture() {
-        ;
-
         //vérifier la validation des données au préalable
         //stockage dans variable de session
         $labelParking = $_POST['sel_parking'];
@@ -80,8 +74,6 @@ class ControllerRes_car {
     }
 
     public static function endCarReservation() {
-        ;
-
         // on stocke tout dans la base de données
         if (isset($_POST['sel_car'])) {
             $plate_id = $_POST['sel_car'];
@@ -91,10 +83,9 @@ class ControllerRes_car {
         $id_user = $_SESSION['id'];
         $labelParking = $_SESSION['parking_car'];
         $price = $_SESSION['price_car'];
-        print_r($id_user);
-        print_r($labelParking);
         modelRent::insert($plate_id, $id_user, $labelParking, $date, $date2, $price);
-        require (CHEMIN_VUE . 'viewReserveCarDone.php');
+        $message = 'Réservation confirmée, à bientôt!';
+        require (CHEMIN_VUE . 'viewMessage.php');
     }
     
         public static function printreservation(){
