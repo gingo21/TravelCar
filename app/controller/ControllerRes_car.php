@@ -66,17 +66,11 @@ class ControllerRes_car {
         $datetime1 = new DateTime($_SESSION['carDateDeb']);
         $datetime2 = new DateTime($_SESSION['carDateFin']);
         $interval = $datetime1->diff($datetime2);
-        print_r($interval->d);
-        print_r($price_parking);
         $price_total = $price_parking[0] * $interval->d;
         $_SESSION['price_car'] = $price_total;
         
-        print_r(gettype($_SESSION['carDateDeb']));
-        print_r(gettype($_SESSION['carDateFin']));
-        print_r($labelParking);
         // ON Recupere les voitures qui sont disponibles dans ce parking pour cette periode
-         $results = modelPark::carsReadyToRentAvancee($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
-         print_r($results);
+        $results = modelPark::carsReadyToRentAvancee($_SESSION['carDateDeb'],$_SESSION['carDateFin'],$labelParking);
         require (CHEMIN_VUE . 'viewReserveCar3.php');
     }
 
@@ -100,8 +94,8 @@ class ControllerRes_car {
     
         public static function printreservation(){
             $type = 'car';
+            $controller = 'reserveCar';
             $test = $_SESSION['id'];
-            print_r($test);
             $resultat = modelRent::read($_SESSION['id']);
             $colnames = array("Plate ID", "Parking", "Date Début", "Date fin","prix");
              include (CHEMIN_VUE . 'viewReservationUser.php');
