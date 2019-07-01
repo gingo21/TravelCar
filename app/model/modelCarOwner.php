@@ -37,6 +37,31 @@ class modelCarOwner {
         }
     }
     
+        public static function readVehiculeAvailableId($car_owner_id,  $date1, $date2) {
+        try {
+            $database = SModel::getInstance();
+            $query = "select plate_id from car_owner where car_owner_id = :car_owner_id and
+        isnull(date_end)
+        and plate_id not in (
+        select plate_id from park where :date1 >= date_debut and :date2 <= date_fin
+        )";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'car_owner_id' => $car_owner_id,
+                'date1' => $date1,
+                'date2' => $date2
+            ]);
+            $results = array();
+            while ($tuple = $statement->fetch()) {
+                $results[] = $tuple[0];
+            }
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
            public static function insert($plate_id, $car_owner_id, $date_start) {
         try {
             $database = SModel::getInstance();

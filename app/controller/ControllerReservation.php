@@ -42,7 +42,7 @@ class ControllerReservation {
         $_SESSION['parkindDateFin'] = $date2;
 
         //on recupere toutes les jours entre les 2 dates
-// Function to get all the dates in given range 
+        // Function to get all the dates in given range 
         function getDatesFromRange($start, $end, $format = 'Y-m-d') {
 
             // Declare an empty array 
@@ -83,7 +83,6 @@ class ControllerReservation {
     }
 
     public static function choixVoiture() {
-        ;
 
         //vérifier la validation des données au préalable
         //stockage dans variable de session
@@ -103,13 +102,11 @@ class ControllerReservation {
 
         $id_user = $_SESSION['id'];
         $results = null;
-        $results = modelCarOwner::readVehiculeId($id_user);
+        $results = modelCarOwner::readVehiculeAvailableId($id_user,$datetime1->format('Y-m-d'),$datetime2->format('Y-m-d'));
         require (CHEMIN_VUE . 'viewReserveParking3.php');
     }
 
     public static function endParkingReservation() {
-        ;
-
         // on stocke tout dans la base de données
         if (isset($_POST['sel_car'])) {
             $plate_id = $_POST['sel_car'];
@@ -129,7 +126,6 @@ class ControllerReservation {
         $controller = 'reservation';
         $test = $_SESSION['id'];
         $resultat = modelPark::read((int) $test);
-        print_r($resultat);
         $colnames = array("Plate ID", "Parking", "Date Début", "Date fin", "prix");
         require (CHEMIN_VUE . 'viewReservationUser.php');
     }
