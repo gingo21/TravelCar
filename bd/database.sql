@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS rent (
   PRIMARY KEY (rent_id),
   FOREIGN KEY (renter_id) REFERENCES user(id),
   FOREIGN KEY (label_parking) REFERENCES parking(label),
-  FOREIGN KEY (plate_id) REFERENCES car_owner(plate_id)
+  FOREIGN KEY (plate_id) REFERENCES park(plate_id)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 
@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS park (
   date_fin date NOT NULL,
   price int(11) NOT NULL,
   PRIMARY KEY (park_id),
-  CONSTRAINT fk_plate_id FOREIGN KEY  (plate_id) REFERENCES car(plate_id),
-  CONSTRAINT fk_label_parking FOREIGN KEY  (label_parking) REFERENCES parking(label),
-  CONSTRAINT  fk_car_owner FOREIGN KEY (car_owner_id) REFERENCES car_owner(car_owner_id)
+FOREIGN KEY  (plate_id) REFERENCES car(plate_id),
+FOREIGN KEY  (label_parking) REFERENCES parking(label),
+ FOREIGN KEY (car_owner_id) REFERENCES car_owner(car_owner_id)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 

@@ -30,21 +30,17 @@ class ControllerUser {
     }
 
     public static function handleCarForm() {
-        ;
-        echo'hiiii';
         if (isset($_POST['plate_id']) && isset($_POST['brand']) && isset($_POST['modele'])) {
-            echo('hiiiii@@@@');
             modelCar::insert($_POST['plate_id'], $_POST['brand'], $_POST['modele'], $_POST['modele'], "green");
             $date = date('Y/m/d');
-            echo '   ' . $date;
             modelCarOwner::insert($_POST['plate_id'], $_SESSION['id'], $date);
-            $message = 'Votre voiture a bien ete ajoute';
+            $message = 'Votre voiture a bien été ajouté';
+            require ('../view/viewMessage.php');
         }
 //                require ('../view/viewAccueil.php');
     }
 
     public static function modifyPassword() {
-        ;
         require ('../view/viewFormModifyPassword.php');
     }
 

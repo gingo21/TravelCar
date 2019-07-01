@@ -6,7 +6,7 @@
  */
 
 include 'fragmentHeader.html';
-include 'fragmentMenuAdmin.php';
+include 'fragmentMenuClient.php';
 require CHEMIN_LIB . 'php_forms.php';
 
 ?>

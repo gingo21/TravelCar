@@ -21,11 +21,11 @@ require CHEMIN_LIB . 'php_forms.php';
         ?>
         <div class="form-group">
             <label for="date1">Date de début:</label>
-            <input type="date" class="form-control" id="date1" placeholder="Choisir date" name="date">
+            <input type="date" class="form-control" id="date1" placeholder="Choisir date" name="date" required>
         </div>
         <div class="form-group">
             <label for="date2">Date de fin:</label>
-            <input type="date" class="form-control" id="date2" placeholder="Choisir date" name="date2">
+            <input type="date" class="form-control" id="date2" placeholder="Choisir date" name="date2"required>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
         <?php

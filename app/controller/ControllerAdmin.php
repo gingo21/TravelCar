@@ -29,14 +29,13 @@ class ControllerAdmin {
     public static function insertParking(){
         if (isset($_POST['label']) && isset($_POST['sel_airport']) && isset($_POST['price']) && isset($_POST['places'])) {
 //        print_r($_POST['label']) ;
-        echo  'jsalberi';
+ 
 //                if (isset($_POST['label']) && isset($_POST['price'])) {
 
             modelParking::insert($_POST['label'], $_POST['sel_airport'], $_POST['price'],$_POST['places']);
             $message = 'Parking ajoute!';
             echo'test';
         }
-        echo 'ifbquwiubilqwfun';
         require ('../view/viewAccueilAdmin.php');
     }
     

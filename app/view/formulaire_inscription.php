@@ -28,8 +28,8 @@ if (!empty($erreurs_inscription)) {
             echo $form->input_text('fname', 'First name:');
             echo $form->input_text('lname', 'Last name:');
             echo $form->input_email('email', 'Email');
-            echo $form->input_text('passwd', 'Password');
-            echo $form->input_text('passwd_conf', 'Password');
+            echo $form->input_password('passwd', 'Password');
+            echo $form->input_password('passwd_conf', 'Password');
             echo $form->input_text('telephone', 'Telephone');
             echo $form->input_hidden('action', 'inscription');
             ?>
@@ -46,4 +46,4 @@ if (!empty($erreurs_inscription)) {
     </div>
 </div>
 
-include 'fragmentFooter.html';
+<?php include 'fragmentFooter.html';
