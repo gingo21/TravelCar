@@ -44,8 +44,8 @@ class modelCar {
     }
 
     function viewCar() {
-        printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
-                $this->getplate_id(), $this->getbrand(), $this->getmodele(), $this->getcolor_car());
+        printf("<tr><td>%s</td><td>%s</td><td>%s</td></tr>",
+                $this->getplate_id(), $this->getbrand(), $this->getmodele());
     }
 
     //on récupère les informations d'une voiture à partir de sa plaque d'immatriculation
