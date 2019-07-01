@@ -43,6 +43,7 @@ class ControllerAdmin {
     public static function viewParks() {
         $results = modelPark::readAll();
         $colnames = array("User ID", "Plate ID", "Parking", "Date Début", "Date fin", "prix");
+        $results2 = modelRent::readAll();
         require (CHEMIN_VUE . 'viewParksAndUsers.php');
     }
 }

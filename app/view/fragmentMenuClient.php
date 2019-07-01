@@ -67,8 +67,11 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="page-heading">
-<!--                    <h1>Contact Me</h1>
-                    <span class="subheading">Have questions? I have answers.</span>-->
+    <?php
+    if (isset ($titre)) {
+        echo "<h1>$titre</h1>";
+    }
+    ?>
                 </div>
             </div>
         </div>

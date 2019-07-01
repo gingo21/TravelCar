@@ -69,6 +69,11 @@ class modelRent {
         printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
                 $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_start(), $this->getDate_end(), $this->getPrice());
     }
+    
+    function viewWithRenter() {
+        printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td></tr>",
+                $this->getRenter_id(), $this->getPlate_id(), $this->getLabel_parking(), $this->getDate_start(), $this->getDate_end(), $this->getPrice());
+    }
 
     public static function read($a) {
         try {
@@ -80,6 +85,20 @@ class modelRent {
             ]);
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelRent");
             return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+    public static function readAll() {
+        try {
+            $database = SModel::getInstance();
+            $query = "select * from rent";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $test = $statement->fetchAll(PDO::FETCH_CLASS, "modelRent");
+            return $test;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return NULL;

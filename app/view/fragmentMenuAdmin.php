@@ -59,7 +59,6 @@
     if (isset ($titre)) {
         echo "<h1>$titre</h1>";
     }
-                    
     ?>
                 </div>
             </div>
