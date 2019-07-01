@@ -18,7 +18,7 @@
 
                 <li><a href="../controller/router.php?action=modifier&type=user">Modifier Informations Personnelles</a></li>
                 <li><a href="../controller/router.php?action=modifyPassword&type=user">Modifier Mot de passe</a></li>
-                <li><a href="../controller/router.php?action=modifier&type=user">Mes réservations</a></li>
+
             </ul>
         </li>
         <li class=" dropdown">
@@ -26,7 +26,7 @@
                 Parking
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="../controller/router.php?action=reserveParking&type=reservation">Parking</a>
+                <a class="dropdown-item" href="../controller/router.php?action=reserveParking&type=reservation">Réserver Parking</a>
                 <a class="dropdown-item" href="../controller/router.php?action=printreservation&type=reservation">Mes réservations</a>
             </div>
         </li>

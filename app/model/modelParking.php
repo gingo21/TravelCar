@@ -43,8 +43,8 @@ class modelParking {
     }
 
     function viewParking() {
-        printf("<tr><td>%s</td><td>%s</td><td>%d</td><td>%.00f</td></tr>",
-                $this->getLabel(), $this->getAirport(), $this->getDay_price(), $this->getNumber_max());
+        printf("<tr><td>%s</td><td>%s</td><td>%d</td></tr>",
+                $this->getLabel(), $this->getAirport(), $this->getDay_price());
     }
 
     function viewParkingCar($carByParking) {

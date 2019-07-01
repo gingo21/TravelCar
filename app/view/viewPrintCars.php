@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-$colnames = array("Plate ID", "Brand", "Model", "Color");
+$colnames = array("Plate ID", "Brand", "Model");
 table_head($colnames);
 echo("<tbody>");
 foreach ($results as $mv) {

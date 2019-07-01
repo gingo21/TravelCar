@@ -29,6 +29,13 @@ class ControllerUser {
         require ('../view/viewFormCar.php');
     }
 
+    public static function deconnexion() {
+        session_unset(); 
+        $message = 'Vous êtes maintenant déconnecté';
+
+        require ('../view/viewMessage.php');
+    }
+
     public static function handleCarForm() {
         if (isset($_POST['plate_id']) && isset($_POST['brand']) && isset($_POST['modele'])) {
             modelCar::insert($_POST['plate_id'], $_POST['brand'], $_POST['modele'], $_POST['modele'], "green");
